@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Tracker Results</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .column {
+            width: 45%;
+        }
+        .flight-list {
+            margin-top: 10px;
+        }
+        .flight-item {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    {% if error %}
+        <h3>{{ error }}</h3>
+    {% else %}
+        <h2>Flight Results</h2>
+        <div class="container">
+            <div class="column">
+                <h3>Inbound Flights</h3>
+                <div class="flight-list">
+                    {% for flight in flights %}
+                        <div class="flight-item">
+                            From: {{ flight.departure }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="column">
+                <h3>Outbound Flights</h3>
+                <div class="flight-list">
+                    {% for flight in flights %}
+                        <div class="flight-item">
+                            To: {{ flight.arrival }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- <h1>Tracking Flights</h1>
+
+    <h2>Inbound Flights</h2>
+    <ul>
+        {% for flight in flights %}
+            <li>From {{ flight['departure']['airport'] }} to {{ flight['arrival']['airport'] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Outbound Flights</h2>
+    <p>To: {{ arrival_airport }}</p> -->
+
+</body>
+</html>
